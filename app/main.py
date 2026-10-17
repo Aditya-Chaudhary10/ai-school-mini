@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 
-app=FastAPI(title='Ai School')
+from app.config import get_settings
 
-@app.get('/health')
+settings = get_settings()
+app = FastAPI(title=settings.app_name)
+
+
+@app.get("/health")
 def health():
-    return {'status':'ok'}
+    return {"status": "ok"}
